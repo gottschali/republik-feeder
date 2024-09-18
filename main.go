@@ -101,7 +101,7 @@ func articlesHandler(w http.ResponseWriter, r *http.Request) {
 			Id:          d.ID,
 			Title:       title,
 			Link:        &feeds.Link{Href: baseURL + d.Meta.Path},
-			Description: d.Meta.Description,
+			Description: d.Meta.Description + "\n\n" + c.GetArticleHTML(d.Meta.Path),
 			Created:     d.PubDate(),
 		})
 	}
