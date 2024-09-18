@@ -209,5 +209,11 @@ func main() {
 	http.HandleFunc("/podcast", podcastHandler)
 	http.Handle("/assets/", assetHandler("/assets"))
 
+	base := "http://" + os.Args[1]
+	fmt.Printf(`You can access the following feeds:
+- Article Feed: %s
+- Podcast Feed: %s
+	`, base + "/articles", base + "/podcast")
+
 	log.Fatal(http.ListenAndServe(os.Args[1], nil))
 }
